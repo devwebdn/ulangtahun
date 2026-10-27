@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selamat Ulang Tahun 🌸 REVA ARYO SILVIA</title>
+  <meta name="description" content="Sebuah persembahan istimewa untuk hari ulang tahunmu yang penuh kasih, musik indah, dan simulasi tiup lilin interaktif." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Dancing+Script:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== FLOATING PETALS LAYER ===== -->
+  <div class="petal-container" id="petalContainer"></div>
+
+  <!-- ===== FLOATING HEARTS LAYER ===== -->
+  <div class="heart-container" id="heartContainer"></div>
+
+  <!-- ===== TOP FLOATING MUSIC CONTROLLER ===== -->
+  <header class="top-nav-bar" id="topNavBar">
+    <div class="music-controller" id="musicControls">
+      <button class="music-btn" id="musicToggle" title="Putar / Jeda Musik" aria-label="Putar atau Jeda Musik">
+        <span class="music-disc-icon">💿</span>
+      </button>
+      <div class="music-track-info" id="musicTrackInfo">
+        <span class="track-status-dot"></span>
+        <div class="track-text-container">
+          <span class="track-title" id="musicLabel">Can't Help Falling in Love 💖</span>
+          <span class="track-subtitle" id="musicArtistLabel">🎵 Musik Otomatis Halaman 1</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== SIDE NAVIGATION DOTS ===== -->
+  <nav class="nav-dots" id="navDots" aria-label="Navigasi Halaman Langsung">
+    <button class="dot active" data-page="0" title="Halaman 1: Pembuka & Doa" aria-label="Halaman 1"></button>
+    <button class="dot" data-page="1" title="Halaman 2: Tiup Lilin & HBD" aria-label="Halaman 2"></button>
+    <button class="dot" data-page="2" title="Halaman 3: Harapan & Doa" aria-label="Halaman 3"></button>
+    <button class="dot" data-page="3" title="Halaman 4: Kenangan Indah" aria-label="Halaman 4"></button>
+    <button class="dot" data-page="4" title="Halaman 5: Surat Cinta & Bunga" aria-label="Halaman 5"></button>
+  </nav>
+
+  <!-- ===== FIXED BOTTOM PAGE NAVIGATION BAR (TOMBOL PINDAH HALAMAN) ===== -->
+  <footer class="bottom-page-nav" id="bottomNavBar" aria-label="Tombol Pindah Halaman">
+    <button class="nav-page-btn prev-btn" id="bottomPrevBtn" aria-label="Halaman Sebelumnya">
+      <span class="btn-arrow">⬅️</span>
+      <span class="btn-text">Sebelumnya</span>
+    </button>
+
+    <div class="page-indicator-pill" id="pageIndicatorPill">
+      <span class="page-num-tag" id="pageNumDisplay">Halaman 1 dari 5</span>
+      <span class="page-title-tag" id="pageTitleDisplay">Pembuka Istimewa 🌸</span>
+    </div>
+
+    <button class="nav-page-btn next-btn" id="bottomNextBtn" aria-label="Halaman Selanjutnya">
+      <span class="btn-text">Selanjutnya</span>
+      <span class="btn-arrow">➡️</span>
+    </button>
+  </footer>
+
+  <!-- ================================================================
+       PAGE 1 — COVER & PENGANTAR
+  ================================================================ -->
+  <section class="page page-1 active" id="page-0" data-index="0">
+    <div class="page-bg" style="background-image: url('assets/birthday_bg.jpg')"></div>
+    <div class="page-overlay overlay-cover"></div>
+    <canvas class="sparkle-canvas" id="sparkleCanvas1"></canvas>
+
+    <div class="page-content center-content">
+      <div class="crown-icon">👑</div>
+      <div class="subtitle-tag fade-in-up delay-1">✨ REVA ARYO SILVIA ✨</div>
+      <h1 class="main-title fade-in-up delay-2">
+        <span class="title-line">Selamat Ulang Tahun</span>
+        <span class="title-line golden">REVA 🎂</span>
+        <span class="title-line">Yang ke-18!</span>
+      </h1>
+      <div class="divider-ornament fade-in-up delay-3">
+        <span>🌸</span><span class="line"></span><span>💕</span><span class="line"></span><span>🌸</span>
+      </div>
+      <p class="intro-text fade-in-up delay-4">
+        Hari ini kamu genap 18 tahun, Reva! Sebuah pencapaian yang membanggakan. Semoga hari ulang tahunmu penuh kebahagiaan dan kenangan indah. 🌸
+      </p>
+      <p class="intro-text fade-in-up delay-5">
+        Di sini ada kue ulang tahun yang bisa kamu tiup lilinnya, musik istimewa, dan beberapa momen yang pernah kita lewati bersama. 💖
+      </p>
+      <div class="page-action-wrapper fade-in-up delay-6">
+        <button class="cta-btn primary-glow-btn" id="page1NextBtn">
+          <span>Buka Hadiah & Tiup Lilin</span>
+          <span class="btn-icon">🎂</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="floating-flowers">
+      <div class="float-flower f1">🌸</div>
+      <div class="float-flower f2">🌺</div>
+      <div class="float-flower f3">🌷</div>
+      <div class="float-flower f4">💐</div>
+      <div class="float-flower f5">🌹</div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       PAGE 2 — HAPPY BIRTHDAY & SIMULASI TIUP LILIN
+  ================================================================ -->
+  <section class="page page-2" id="page-1" data-index="1">
+    <div class="page-bg page2-bg"></div>
+    <div class="page-overlay overlay-pink"></div>
+    <canvas class="sparkle-canvas" id="sparkleCanvas2"></canvas>
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <div class="page-content center-content">
+      <div class="hbd-ribbon fade-in-up delay-1">
+        <span class="ribbon-left">🎀</span>
+        <span class="ribbon-text">Make A Wish & Blow The Candles</span>
+        <span class="ribbon-right">🎀</span>
+      </div>
+
+      <h2 class="hbd-title fade-in-up delay-2" id="hbdTitle">
+        🎉 Selamat Ulang Tahun! 🎉
+      </h2>
+
+      <p class="hbd-message fade-in-up delay-3">
+        Tutup matamu sejenak, bayangkan impian terindahmu, lalu <strong>tiup lilin di atas kue ulang tahunmu</strong> ini! 🌟
+      </p>
+
+      <!-- ===== KUE ULANG TAHUN & SIMULASI TIUP LILIN INTERAKTIF ===== -->
+      <div class="interactive-cake-stage fade-in-up delay-4" id="cakeStage">
+        <!-- Floating candles container -->
+        <div class="cake-container" id="cakeContainer">
+          
+          <!-- Candles Layer -->
+          <div class="candles-rack" id="candlesRack">
+            <!-- Candle 1 -->
+            <div class="candle-item" id="candle-0" data-candle="0" title="Klik untuk tiup lilin ini">
+              <div class="flame-wrap">
+                <div class="flame-halo"></div>
+                <div class="flame-glow"></div>
+                <div class="flame-core"></div>
+              </div>
+              <div class="smoke-puff"></div>
+              <div class="candle-wick"></div>
+              <div class="candle-stick candle-pink">
+                <span class="stripe s1"></span>
+                <span class="stripe s2"></span>
+              </div>
+            </div>
+
+            <!-- Candle 2 (Centerpiece - Taller) -->
+            <div class="candle-item candle-center" id="candle-1" data-candle="1" title="Klik untuk tiup lilin ini">
+              <div class="flame-wrap">
+                <div class="flame-halo"></div>
+                <div class="flame-glow"></div>
+                <div class="flame-core"></div>
+              </div>
+              <div class="smoke-puff"></div>
+              <div class="candle-wick"></div>
+              <div class="candle-stick candle-gold">
+                <span class="stripe s1"></span>
+                <span class="stripe s2"></span>
+              </div>
+            </div>
+
+            <!-- Candle 3 -->
+            <div class="candle-item" id="candle-2" data-candle="2" title="Klik untuk tiup lilin ini">
+              <div class="flame-wrap">
+                <div class="flame-halo"></div>
+                <div class="flame-glow"></div>
+                <div class="flame-core"></div>
+              </div>
+              <div class="smoke-puff"></div>
+              <div class="candle-wick"></div>
+              <div class="candle-stick candle-purple">
+                <span class="stripe s1"></span>
+                <span class="stripe s2"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- The Beautiful 3D Cake -->
+          <div class="cake-body">
+            <!-- Top Frosting with Strawberries -->
+            <div class="cake-frosting-top">
+              <div class="strawberry sb-1">🍓</div>
+              <div class="cream-drop cd-1">🍦</div>
+              <div class="strawberry sb-2">🍓</div>
+              <div class="cream-drop cd-2">🍦</div>
+              <div class="strawberry sb-3">🍓</div>
+            </div>
+
+            <!-- Cake Tier 1 (Top Tier) -->
+            <div class="cake-tier tier-top">
+              <div class="cream-drips">
+                <span class="drip d1"></span>
+                <span class="drip d2"></span>
+                <span class="drip d3"></span>
+                <span class="drip d4"></span>
+                <span class="drip d5"></span>
+              </div>
+              <div class="cake-decor-text">Happy Birthday 💕</div>
+            </div>
+
+            <!-- Cake Tier 2 (Bottom Tier) -->
+            <div class="cake-tier tier-bottom">
+              <div class="sprinkles-layer">
+                <span class="sp sp-1"></span>
+                <span class="sp sp-2"></span>
+                <span class="sp sp-3"></span>
+                <span class="sp sp-4"></span>
+                <span class="sp sp-5"></span>
+                <span class="sp sp-6"></span>
+              </div>
+              <div class="cream-lace"></div>
+            </div>
+
+            <!-- Cake Plate / Stand -->
+            <div class="cake-plate"></div>
+          </div>
+        </div>
+
+        <!-- Blowing Controls Card -->
+        <div class="blow-controls-card">
+          <div class="blow-status-message" id="blowStatusMessage">
+            ✨ Lilin menyala hangat. Buatlah sebuah permohonan indah di dalam hatimu...
+          </div>
+
+          <!-- Buttons to blow candles -->
+          <div class="blow-buttons-row">
+            <button class="blow-action-btn blow-btn-primary" id="blowButton" title="Klik untuk meniup lilin">
+              <span class="btn-emoji">💨</span>
+              <span class="btn-label">Tiup Lilin Sekarang</span>
+            </button>
+
+            <button class="blow-action-btn blow-btn-hold" id="holdBlowButton" title="Tekan dan tahan untuk meniup">
+              <span class="btn-emoji">🌬️</span>
+              <span class="btn-label">Tahan untuk Meniup</span>
+              <div class="hold-progress-bar" id="holdProgressBar"></div>
+            </button>
+
+            <button class="blow-action-btn blow-btn-mic" id="micBlowButton" title="Gunakan mikrofon hp/laptop untuk mendeteksi tiupan langsung">
+              <span class="btn-emoji">🎙️</span>
+              <span class="btn-label" id="micBtnLabel">Tiup Pakai Mic</span>
+            </button>
+          </div>
+
+          <!-- Mic Blow Meter (shown when mic active) -->
+          <div class="mic-meter-container" id="micMeterContainer" style="display: none;">
+            <div class="mic-meter-label">
+              <span>Sensor Tiupan Suara:</span>
+              <span id="micMeterStatus">Dekatkan mulut ke mic & tiup! 🌬️</span>
+            </div>
+            <div class="mic-meter-track">
+              <div class="mic-meter-fill" id="micMeterFill"></div>
+              <div class="mic-meter-target"></div>
+            </div>
+          </div>
+
+          <!-- Success celebration banner (Appears after blowing) -->
+          <div class="blow-success-card" id="blowSuccessCard" style="display: none;">
+            <div class="success-icon-burst">🎉✨🎂✨🎉</div>
+            <h3 class="success-heading">Horeee! Lilin Berhasil Ditiup! 💖</h3>
+            <p class="success-text">
+              Semoga semua doa, harapan, dan cita-cita manismu dikabulkan oleh Yang Maha Kuasa. 
+              Kamu layak mendapatkan kebahagiaan paling tulus di dunia ini! 🌸
+            </p>
+            <button class="relight-btn" id="relightCandlesBtn">
+              <span>🕯️ Nyalakan Lilin Lagi</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== MUSIC JUKEBOX EMBEDDED ===== -->
+      <div class="music-player-showcase fade-in-up delay-5" id="pageMusicShowcase">
+        <div class="showcase-header">
+          <div class="showcase-vinyl-wrap">
+            <div class="showcase-vinyl" id="showcaseVinyl">💿</div>
+            <div class="vinyl-center-dot"></div>
+          </div>
+          <div class="showcase-info">
+            <span class="showcase-badge">🎵 Musik Otomatis Halaman 2</span>
+            <h4 class="showcase-song-title" id="showcaseSongTitle">Happy Birthday To You 🎂</h4>
+            <p class="showcase-song-artist" id="showcaseSongArtist">Lagu Ulang Tahun & Tiup Lilin</p>
+          </div>
+        </div>
+
+        <div class="showcase-controls">
+          <button class="ctrl-btn play-main-btn" id="showcasePlayBtn" title="Putar / Jeda Musik Halaman Ini">
+            <span id="showcasePlayIcon">⏸</span>
+            <span id="showcasePlayText">Jeda Musik</span>
+          </button>
+        </div>
+
+        <!-- Waveform visualizer -->
+        <div class="showcase-waveform" id="showcaseWaveform">
+          <div class="s-bar"></div><div class="s-bar"></div><div class="s-bar"></div>
+          <div class="s-bar"></div><div class="s-bar"></div><div class="s-bar"></div>
+          <div class="s-bar"></div><div class="s-bar"></div><div class="s-bar"></div>
+          <div class="s-bar"></div><div class="s-bar"></div><div class="s-bar"></div>
+          <div class="s-bar"></div><div class="s-bar"></div><div class="s-bar"></div>
+          <div class="s-bar"></div>
+        </div>
+      </div>
+
+      <div class="page-action-wrapper fade-in-up delay-6">
+        <button class="next-page-btn" id="page2NextBtn">
+          <span>Lanjut ke Doa & Harapan</span>
+          <span class="btn-icon">💌</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       PAGE 3 — HARAPAN & DOA
+  ================================================================ -->
+  <section class="page page-3" id="page-2" data-index="2">
+    <div class="page-bg page3-bg"></div>
+    <div class="page-overlay overlay-lavender"></div>
+    <canvas class="sparkle-canvas" id="sparkleCanvas3"></canvas>
+
+    <div class="page-content center-content">
+      <div class="star-burst fade-in-up">✨</div>
+      <h2 class="section-title fade-in-up delay-1">
+        Harapan & Doa <br/>
+        <span class="golden-italic">Untukmu</span>
+      </h2>
+      <div class="divider-ornament fade-in-up delay-2">
+        <span>🌙</span><span class="line"></span><span>⭐</span><span class="line"></span><span>🌙</span>
+      </div>
+
+      <div class="wishes-grid fade-in-up delay-3">
+        <div class="wish-card" data-delay="0">
+          <div class="wish-icon">🌟</div>
+          <div class="wish-title">Sukses Terus</div>
+          <div class="wish-text">Semoga kuliahmu lancar, cita-citamu tercapai, dan setiap usahamu membuahkan hasil yang baik.</div>
+        </div>
+        <div class="wish-card" data-delay="100">
+          <div class="wish-icon">💖</div>
+          <div class="wish-title">Selalu Bahagia</div>
+          <div class="wish-text">Semoga kamu selalu dikelilingi hal-hal yang bikin senyum dan jauh dari yang bikin sedih.</div>
+        </div>
+        <div class="wish-card" data-delay="200">
+          <div class="wish-icon">🌈</div>
+          <div class="wish-title">Sehat Selalu</div>
+          <div class="wish-text">Semoga badan dan mentalmu selalu sehat, biar bisa ngejalanin hari-hari dengan semangat.</div>
+        </div>
+        <div class="wish-card" data-delay="300">
+          <div class="wish-icon">🦋</div>
+          <div class="wish-title">Jadi Diri Sendiri</div>
+          <div class="wish-text">Tetap jadi Reva yang apa adanya — jangan lupa bahagia dengan caramu sendiri.</div>
+        </div>
+        <div class="wish-card" data-delay="400">
+          <div class="wish-icon">💫</div>
+          <div class="wish-title">Dikelilingi Orang Baik</div>
+          <div class="wish-text">Semoga selalu ada orang-orang yang tulus di sekitarmu, yang dukung dan menghargaimu.</div>
+        </div>
+        <div class="wish-card" data-delay="500">
+          <div class="wish-icon">🌺</div>
+          <div class="wish-title">Rezeki Lancar</div>
+          <div class="wish-text">Semoga di usia 18 ini pintu-pintu baik terbuka lebar untukmu — rezeki, peluang, dan kesempatan.</div>
+        </div>
+      </div>
+
+      <p class="closing-wish fade-in-up delay-4">
+        "Selamat jadi 18 tahun, Reva! Semoga tahun ini jadi salah satu tahun terbaik dalam hidupmu." 🌸
+      </p>
+
+      <div class="page-action-wrapper fade-in-up delay-5">
+        <button class="next-page-btn" id="page3NextBtn">
+          <span>Lihat Kenangan Indah</span>
+          <span class="btn-icon">📸</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       PAGE 4 — GALERI KENANGAN
+  ================================================================ -->
+  <section class="page page-4" id="page-3" data-index="3">
+    <div class="page-bg page4-bg"></div>
+    <div class="page-overlay overlay-rose"></div>
+    <canvas class="sparkle-canvas" id="sparkleCanvas4"></canvas>
+
+    <div class="page-content center-content">
+      <h2 class="section-title fade-in-up">
+        Momen yang <br/>
+        <span class="golden-italic">Tak Terlupakan 📸</span>
+      </h2>
+      <div class="divider-ornament fade-in-up delay-1">
+        <span>📸</span><span class="line"></span><span>💕</span><span class="line"></span><span>📸</span>
+      </div>
+      <p class="section-desc fade-in-up delay-2">
+        Selamat ulang tahun yang ke-18, Reva! Ini foto-foto keseruanmu di hari spesial ini. Momen yang pasti selalu diingat! 💕
+      </p>
+
+      <!-- Photo Gallery -->
+      <div class="photo-gallery fade-in-up delay-3" id="photoGallery">
+        <div class="photo-card">
+          <div class="photo-frame">
+            <img src="assets/photo1.png" alt="Reva Ulang Tahun ke-18" class="gallery-photo" />
+          </div>
+          <div class="photo-caption">🎂 Reva dengan kue ulang tahun ke-18 — senyumnya bikin semua orang ikut senang!</div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-frame">
+            <img src="assets/photo2.png" alt="Reva pose cantik" class="gallery-photo" />
+          </div>
+          <div class="photo-caption">🎈 Pose ceria di tengah balon-balon biru — vibes ulang tahunnya berasa banget!</div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-frame">
+            <img src="assets/photo3.png" alt="Reva dengan mahkota" class="gallery-photo" />
+          </div>
+          <div class="photo-caption">👑 Pakai mahkota, elegan banget! Happy birthday, Reva!</div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-frame">
+            <img src="assets/photo4.png" alt="Reva Happy Birthday" class="gallery-photo" />
+          </div>
+          <div class="photo-caption">🎉 HAPPY BIRTHDAY! Tulisan balon yang pas banget sama momennya!</div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-frame">
+            <img src="assets/photo5.png" alt="Reva pose keren" class="gallery-photo" />
+          </div>
+          <div class="photo-caption">🌸 Siap menyambut 18 tahun dengan penuh semangat dan percaya diri!</div>
+        </div>
+        <div class="photo-card">
+          <div class="photo-frame">
+            <img src="assets/photo6.png" alt="Reva Birthday Girl sash" class="gallery-photo" />
+          </div>
+          <div class="photo-caption">🎀 Birthday Girl! Kamu emang the one and only, Reva! 👑</div>
+        </div>
+      </div>
+
+      <div class="page-action-wrapper fade-in-up delay-5">
+        <button class="next-page-btn" id="page4NextBtn">
+          <span>Buka Pesan dari Kami</span>
+          <span class="btn-icon">💝</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  </section>
+
+  <!-- ================================================================
+       PAGE 5 — PENUTUP & PESAN CINTA
+  ================================================================ -->
+  <section class="page page-5" id="page-4" data-index="4">
+    <div class="page-bg page5-bg"></div>
+    <div class="page-overlay overlay-deep"></div>
+    <canvas class="sparkle-canvas" id="sparkleCanvas5"></canvas>
+
+    <div class="page-content center-content">
+      <div class="heart-anim" id="heartAnim">💝</div>
+      <h2 class="section-title fade-in-up delay-1">
+        Dengan Sepenuh <br/>
+        <span class="golden-italic">Hati & Cinta</span>
+      </h2>
+
+      <div class="love-letter fade-in-up delay-2">
+        <div class="letter-header">
+          <span>💌</span> Pesan dari Kami <span>💌</span>
+        </div>
+        <div class="letter-body">
+          <p>
+            Untuk Reva,
+          </p>
+          <p>
+            Selamat ulang tahun yang ke-18! Nggak terasa ya udah segede ini. Kamu udah berkembang jadi orang yang lebih dewasa, dan itu keren banget.
+          </p>
+          <p>
+            Semoga di usia 18 ini semuanya makin baik — kuliahnya lancar, orangtuanya bangga, dan kamu makin bahagia dari hari ke hari.
+          </p>
+          <p>
+            Tetap semangat, jaga kesehatan, dan terus jadi versi terbaik dari dirimu sendiri!
+          </p>
+          <p class="letter-sign">
+            Salam sayang, <br/>
+            <span class="signature">ARYO &amp; SILVIA 💖</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Star Rating / Love meter -->
+      <div class="love-meter fade-in-up delay-3">
+        <div class="meter-label">Seberapa istimewa kamu bagiku? 💕</div>
+        <div class="meter-stars" id="meterStars">
+          <span class="star" data-val="1">⭐</span>
+          <span class="star" data-val="2">⭐</span>
+          <span class="star" data-val="3">⭐</span>
+          <span class="star" data-val="4">⭐</span>
+          <span class="star" data-val="5">⭐</span>
+        </div>
+        <div class="meter-result" id="meterResult">Klik bintang untuk melihat jawabannya!</div>
+      </div>
+
+      <!-- Bouquet display -->
+      <div class="final-bouquet fade-in-up delay-4">
+        <img src="assets/flower_bouquet.jpg" alt="Buket Bunga Istimewa Untukmu" class="bouquet-img" />
+        <p class="bouquet-caption">🌸 Bunga mawar dan peony terindah ini khusus dipersembahkan untukmu hari ini! 🌸</p>
+      </div>
+
+      <!-- Restart button -->
+      <div class="page-action-wrapper fade-in-up delay-5">
+        <button class="restart-btn" id="restartBtn">
+          <span>🔄 Ulangi dari Halaman Pertama</span>
+        </button>
+      </div>
+
+      <div class="final-footer fade-in-up delay-6">
+        <p>Dibuat dengan 💖 oleh ARYO &amp; SILVIA | Happy 18th Birthday, REVA! 🎂✨</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LOADING SCREEN ===== -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-content">
+      <div class="loading-rose">🌹</div>
+      <p class="loading-text">Menyiapkan hadiah dan melodi istimewamu...</p>
+      <div class="loading-bar"><div class="loading-fill" id="loadingFill"></div></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
